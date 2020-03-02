@@ -13,7 +13,7 @@ async def on_command_error(ctx, error):
     await ctx.send(error_msg)
     
    async def on_message(message):
-    if message.author.id == 640559323583479832: # MEE6からのメッセージかどうかを判別
+    if message.author.id == 528496651707482112: # MEE6からのメッセージかどうかを判別
         if message.content.startswith("!levelup"):
             await message.delete() # メッセージを消去
 
