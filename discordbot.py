@@ -1,12 +1,9 @@
 from discord.ext import commands
 import os
 import traceback
-import discord
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
-
-client = discord.Client()
 
 
 @bot.event
@@ -14,9 +11,21 @@ async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
     
-   async def on_message(message):
-    if message.author.id == 528496651707482112: # MEE6からのメッセージかどうかを判別
+bot.run(token)
+
+import discord
+
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+    if message.author.id == 159985870458322944: # MEE6からのメッセージかどうかを判別
         if message.content.startswith("!levelup"):
             await message.delete() # メッセージを消去
 
@@ -37,12 +46,4 @@ async def on_command_error(ctx, error):
                 await target.add_roles(levelrole5)
                 await target.remove_roles(levelrole1)
 
-client.run(token) # Botのトークン
-
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
-
-
-bot.run(token)
+client.run("Njg0MDA0NjA2MTUzNTg4OTA5.XlzzoQ.S2evZu8KTo90dHqWnn0_ZAxu_BM") # Botのトークン
