@@ -25,7 +25,7 @@ client = discord.Client()
 
 @client.event
 async def on_message(message):
-    if message.author.id == 159985870458322944: # MEE6からのメッセージかどうかを判別
+    if message.author.id == 528496651707482112: # MEE6からのメッセージかどうかを判別
         if message.content.startswith("!levelup"):
             await message.delete() # メッセージを消去
 
